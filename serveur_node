@@ -29,7 +29,7 @@ app.post('/user', (req, res, next) => {
 db.open('todolist.db').then(() => {
   console.log('Database ready')
   return Promise.all([
-    db.run("CREATE TABLE IF NOT EXISTS TODOS (message, completion, created_at, updated_at)")
+    db.get("CREATE TABLE IF NOT EXISTS TODOS (message, completion, created_at, updated_at)")
   ])
 })
 .then(() => {
@@ -47,22 +47,31 @@ app.get('/todos', (req, res, next) => {
     console.log('je renvoie les resultats')
     return Promise.all([
       db.all("SELECT * FROM TODOS")
+      .then((response) => {
+      return Promise.all([
+        res.send(response)
+        ])
+      })
     ])
   })
   .then(() => {
-    console.log('resultats envoyés')
+    console.log('la ya b')
   })
   .catch(() => console.log('une erreur est survenue'))
   res.send('le get todos')
 })
 
 
+
+
+
 app.post('/todos', (req, res, next) => {
   db.open('todolist.db').then(() => {
     console.log('Je rajoute des champs')
+    console.log(req.body.message)
     return Promise.all([
-      db.get("INSERT INTO TODOS (monmessage, nanana, nanana, nanana"))
-
+      //db.run("INSERT INTO TODOS (message) VALUES (${req.body.message})")
+      db.run(`INSERT INTO TODOS (message, completion, created_at, updated_at) VALUES ('${req.body.message}','${req.body.completion}','${req.body.created_at}','${req.body.updated_at}')`)
     ])
   })
   .then(() => {
@@ -70,7 +79,7 @@ app.post('/todos', (req, res, next) => {
   })
   .catch(() => console.log('une erreur est survenue'))
   res.send('le post todos')
-  })
+})
 
 
 
@@ -100,7 +109,7 @@ il renvoi une promesse
 
 faire un app.post pour creer un objet de la ressource sur /todos qui permet de creer une todos  a l'aide de postman
 
-pour updated_ad et created_at voir sur date.now
+pour updated_at et created_at voir sur date.now
 
 db.all
 db.get
