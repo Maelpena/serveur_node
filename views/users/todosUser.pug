@@ -1,0 +1,39 @@
+doctype html
+html(lang='fr')
+  head
+    style
+      include style.css
+  body
+    #bigTitle
+      p#bigTitle MY TODOS
+    each val in todosUser
+
+      #todo.container
+        p#title TODO n°#{val.id}
+
+          #todo.content
+            p#text TO DO : #{val.message}
+            p#text THIS TODO IS : #{val.completion}
+            p#text IT IS FOR : user n°#{val.userId}
+            p#subTitle Created the #{val.createdAt}
+
+            #delete.button
+              form(action=`/todos/${val.id}?_override=DELETE`, method='POST')
+                input#redBut(type='submit', value='Delete')
+
+            #seeMore.button
+              form(action=`/todos/${val.id}`, method='GET')
+                input#blueBut(type='submit', value="See more..")
+
+            #comeBack.button
+              form(action='javascript:history.back()', method='GET')
+                input#backBut(type='submit', value='Come back')
+
+
+
+
+  form(action=`/todos/add`, method='GET')
+    input#addBut(type='submit', value='+')
+
+  form(action=`/users`, method='GET')
+    input#switchBut(type='submit', value='ALL USERS')

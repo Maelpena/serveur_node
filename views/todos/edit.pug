@@ -1,0 +1,43 @@
+doctype html
+html(lang='fr')
+  head
+    style
+      include style.css
+  body
+    #todo.container
+      p#title Edit the todo
+
+        #todo.content
+          form(action=`/todos/${edit.id}?_override=PATCH`, method='POST')
+            label#text(for='name') Change the message :
+            input(type='text', name='message', value=edit.message)
+
+            br
+
+            label#text(for='name') For which user is this todo :
+            select(name='userId', size='1', value=edit.userId)
+              option 1
+              option 2
+              option 3
+              option 5
+              option 6
+              option 7
+              option 8
+              option 9
+              option 10
+
+            br
+
+            label#text(for='completion') This todo is :
+            select(name='completion', size='1',value=edit.completion)
+              option to do
+              option in progress
+              option done
+
+            br
+            #submit.button
+              input#greenBut(type='submit', value='Submit !')
+
+            #comeBack.button
+              form(action=`javascript:history.back()`, method='GET')
+                input#backBut(type='submit', value='Come back')

@@ -1,0 +1,38 @@
+doctype html
+html(lang='fr')
+  head
+    style
+      include style.css
+  body
+    #user.container
+      p#title Edit the users
+
+      #user.content
+        form(action=`/users/${edit.id}?_override=PATCH`, method='POST')
+
+          label#text(for='name') Change the firstname :
+          input(type='text', name='firstname', value=edit.firstname)
+          br
+
+          label#text(for='name') Change the lastname:
+          input#name(type='text', name='lastname', value=edit.lastname)
+          br
+
+          label#text(for='name') Change the username :
+          input(type='text', name='username', value=edit.username)
+          br
+
+          label#text(for='name') Changethe password :
+          input(type='password', name='password', value=edit.password)
+          br
+
+          label#text(for='name') Change the e-mail :
+          input(type='text', name='email', value=edit.email)
+          br
+
+          #submit.button
+            input#greenBut(type='submit', value='Submit !')
+
+          #comeBack.button
+            form(action=`javascript:history.back()`, method='GET')
+              input#backBut(type='submit', value='Come back')

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>aide</title>
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
+  </head>
+  <body>
+    <div class="la_todo">
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+
+        <a href="https://google.com" target="_blank"> <input type="button" value="Bouton"> </a>
+
+      <button type="button" name="button">le bouton</button>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title> Titre </title>
+</head>
+<body>
+
+  <input type="text" id="lastname" name= "lastname" placeholder="lastname" class="zonetext"/> <br/>
+  <input type="text" id="firstname" name= "firstname" placeholder="firstname" class="zonetext"/> <br/>
+  <input type="text" id="username" name= "username" placeholder="username" class="zonetext"/> <br/>
+  <input type="radio" id="vient" name="participation"/> Je viens <br/>
+  <input type="radio" id="vientpas" name="participation"/> Je viens pas <br/>
+  <button type="button" id="ok" name="ok" class="boutrouge"> OK </button>
+
+
+<!--
+                <div id="aurevoir" style="display:none;">
+                    <h3>
+                    Sur de pas venir ?
+                    <h3>
+                    <button type="button" id="oui" name="oui" class="boutrouge"> OUI </button>
+                    <button type="button" id="non" name="non" class="boutrouge">NON</button>
+                </div>
+
+
+                <div id="adieu" style="display:none;">
+                    <h3> Dommage, une prochaine fois peut être ! <br/> A bientôt ! </h3>
+                    <button type="button" id="debut" name="debut" class="boutrouge" onclick="Debut();">Revenir au debut</button>
+                </div>
+
+
+                <div id="music" style="display:none;">
+
+                    <div >
+                        <h6 class="texte"> Pour la soirée, nous proposons au participant de créer une sélection de musique qui passera durant la soirée, <br> souhaites-tu créer une sélection de titre ? </h6>
+                    </div>
+
+                    <div>
+                        <button type="button" id="creer" class="boutrouge" name="ajouter">  Créer selection  </button>
+                        <button type="button" id="enregistrement" class="boutrouge" name="enregistrement"> Passer à l'enregistrement </button>
+                    </div>
+
+                </div>
+
+
+                <div id="son" style="display:none;">
+                    <table>
+                        <tr>
+                            <td id="col1">
+                                <h3><b> Ajouter un titre ? </b></h3>
+                                <hr/>
+                                <br/>
+                                <input id="artiste" type="text" name="Artiste" placeholder="Artiste" class="zonetext"/> <br/>
+                                <input id="musique" type="text" name="Titre" placeholder="Titre" class="zonetext"/> <br/>
+                                <h5> A quel moment de la soirée aimerais-tu l'entendre ? </h5>
+                                <br/>
+                                <select name="moment" id="moment" size="1">
+                                    <option>Choisir moment</option>
+                                    <option>Pendant l apéro</option>
+                                    <option>Pendant de le repas</option>
+                                    <option>Au Dessert</option>
+                                    <option>Après le repas</option>
+                                </select>
+                                <div id="heure" style="display:none;">
+                                    <br/>
+                                    <h5> Vers quelle heure ? </h5>
+                                    <br/>
+                                    <select id="HH" name="heure" size="1">
+                                        <option>Choisir heure</option>
+                                        <option>22h00 </option>
+                                        <option>23h00 </option>
+                                        <option>00h00 </option>
+                                        <option>02h00 </option>
+                                        <option>03h00 </option>
+                                        <option>04h00 </option>
+                                        <option>05h00 </option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td id="col2">
+                                <h3 ><b> Sélection </b></h3>
+                            </td>
+                        </tr>
+                    </table>
+                    <div>
+                        <button type="button" name="ajoutselect" class="boutrouge" onclick="Ajouterlaselect();"> Ajouter à la sélection</button>
+                        <button type="button" name="confselect" class="boutrouge" onclick="Confirmerlaselect();"> Confirmer la sélection</button>
+                        <button type="button" name="annulselect" class="boutrouge" onclick="Supprimerlaselect();"> Supprimer la sélection</button>
+                        <br/>
+                    </div>
+
+                </div>
+
+
+                <div id="confsuppr" style="display:none;">
+                    <h3> Veut tu vraiment supprimer ta selection et terminer l'enregistrement ?</h3>
+                    <button type="button" id="oui2" name="oui2" class="boutrouge"> OUI </button>
+                    <button type="button" id="non2" name="non2" class="boutrouge"> NON </button>
+                </div>
+
+
+                <div id="confconf" style="display:none;">
+                    <h3> Veut tu vraiment confirmer ta selection et terminer l'enregistrement ?</h3>
+                    <button type="button" id="oui3" name="oui3" class="boutrouge"> OUI </button>
+                    <button type="button" id="non3" name="non3" class="boutrouge"> NON </button>
+                </div>
+
+
+                <div id="terminer" style="display:none;">
+                    <h3> Terminer l'enregistrement ? </h3>
+                    <button type="button" id="oui1" name="oui1" class="boutrouge"> OUI </button>
+                    <button type="button" id="non1" name="non1" class="boutrouge"> NON </button>
+                </div>
+
+
+                <div id="merci" class="remerciment">
+                    <h2>
+                    Ta presence a bien été enregistrer ! <br>
+                    Merci, on compte sur toi pour être la ! !
+                    <h2>
+                    <button type="button" name="debut" class="boutrouge" onclick="Debut();">Revenir au debut</button>
+                </div>
+
+
+                <div id="merci1" class="remerciment">
+                    <h2>
+                    Ta playlist a bien été enregistrer ! <br>
+                    Merci, on compte sur toi pour être la le 16 décembre ! !
+                    <h2>
+                    <button type="button" name="debut" class="boutrouge" onclick="Debut();">Revenir au debut</button>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+    <script type ="text/javascript" src="../js/TP.js"> </script>
+
+     -->
+</body>
+</html>

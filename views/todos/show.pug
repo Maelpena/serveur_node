@@ -1,0 +1,34 @@
+doctype html
+html(lang='fr')
+  head
+    style
+      include style.css
+  body
+    #todo.container
+
+      p#title TODO n°#{show.id}
+
+        #todo.content
+          p#text TO DO : #{show.message}
+          p#text THIS TODO IS : #{show.completion}
+          p#text IT IS FOR : user n°#{show.userId}
+          p#subTitle Created the #{show.createdAt}
+          p#subTitle Updated the #{show.updatedAt}
+
+          #delete.button
+            form(action=`/todos/${show.id}?_override=DELETE`, method='POST')
+              input#redBut(type='submit', value='Delete')
+
+          #edit.button
+            form(action=`/todos/${show.id}/edit`, method="GET" )
+              input#editBut(type='submit' value='Edit')
+
+          #comeBack.button
+            form(action='javascript:history.back()', method='GET')
+              input#backBut(type='submit', value='Come back')
+
+  form(action=`/todos/add`, method='GET')
+    input#addBut(type='submit', value='+')
+
+  form(action=`/users`, method='GET')
+    input#switchBut(type='submit', value='ALL USERS')

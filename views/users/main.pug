@@ -1,0 +1,34 @@
+doctype html
+html(lang='fr')
+  head
+    style
+      include style.css
+  body
+    each val in users
+      #todo.container
+        p#title USER n°#{val.id}
+
+          #user.content
+            p#text Firstname : #{val.firstname}
+            p#text Lastname : #{val.lastname}
+            p#text Username : #{val.username}
+            p#text The password is : #{val.password}
+            p#text The e-mail is : #{val.email}
+            p#subTitle Created the #{val.createdAt}
+
+            
+
+            #delete.button
+              form(action=`/users/${val.id}?_override=DELETE`, method='POST')
+                input#redBut(type='submit', value='Delete')
+
+            #seeMore.button
+              form(action=`/users/${val.id}`, method='GET')
+                input#blueBut(type='submit', value="See more..")
+
+
+  form(action=`/users/add`, method='GET')
+    input#addBut(type='submit', value='+')
+
+  form(action=`/todos`, method='GET')
+    input#switchBut(type='submit', value='ALL TODOS')

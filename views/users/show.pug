@@ -1,0 +1,45 @@
+doctype html
+html(lang='fr')
+  head
+    style
+      include style.css
+  body
+    #user.container
+
+      #header.button
+
+        p#title2 USER n°#{show.id}
+
+      #header2.button
+        form(action=`/users/${show.id}/todos`, method='GET')
+          input#showTodosBut1(type='submit', value='Show his todos')
+
+
+      #user.content
+        p#text Firstname : #{show.firstname}
+        p#text Lastname : #{show.lastname}
+        p#text Username : #{show.username}
+        p#text The password is : #{show.password}
+        p#text The e-mail is : #{show.email}
+        p#subTitle Created the #{show.createdAt}
+        p#subTitle Created the #{show.updatedAt}
+
+
+        #delete.button
+          form(action=`/users/${show.id}?_override=DELETE`, method='POST')
+            input#redBut(type='submit', value='Delete')
+
+        #edit.button
+          form(action=`/users/${show.id}/edit`, method="GET" )
+            input#editBut(type='submit' value='Edit')
+
+        #comeBack.button
+          form(action='javascript:history.back()', method='GET')
+            input#backBut(type='submit', value='Come back')
+
+
+  form(action=`/users/add`, method='GET')
+    input#addBut(type='submit', value='+')
+
+  form(action=`/todos`, method='GET')
+    input#switchBut(type='submit', value='ALL TODOS')
