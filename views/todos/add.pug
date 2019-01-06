@@ -4,12 +4,14 @@ html(lang='fr')
     style
       include style.css
   body
+    #bigTitle
+      p#bigTitle TODOS
     #todo.container
       p#title Add todo
 
         #todo.content
           form(action='/todos', method='POST')
-            label#text(for='name') Right the task to do :
+            label#text(for='name') Write the to do task :
             input(type='text', name='message')
 
             br
@@ -39,6 +41,6 @@ html(lang='fr')
             #submit.button
               input#greenBut(type='submit', value='Submit !')
 
-          #comeBack.button
-            form(action='/todos', method='GET')
+          #comeBack.comeBack
+            form(action='javascript:history.back()', method='GET')
               input#backBut(type='submit', value='Come back')

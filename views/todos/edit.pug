@@ -4,6 +4,8 @@ html(lang='fr')
     style
       include style.css
   body
+    #bigTitle
+      p#bigTitle TODOS
     #todo.container
       p#title Edit the todo
 
@@ -30,14 +32,14 @@ html(lang='fr')
 
             label#text(for='completion') This todo is :
             select(name='completion', size='1',value=edit.completion)
-              option to do
-              option in progress
-              option done
+              option To do
+              option In progress
+              option Done
 
             br
             #submit.button
               input#greenBut(type='submit', value='Submit !')
 
-            #comeBack.button
-              form(action=`javascript:history.back()`, method='GET')
-                input#backBut(type='submit', value='Come back')
+          #comeBack.comeBack
+            form(action=`javascript:history.back()`, method='GET')
+              input#backBut(type='submit', value='Come back')

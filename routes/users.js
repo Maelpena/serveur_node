@@ -4,15 +4,10 @@ let override = require('method-override');
 let dateTime = require('node-datetime');
 let dt = dateTime.create();
 let time = dt.format('m/d/Y');
-//
+let alert = require('alert-node');
 const bcrypt = require('bcryptjs');
-const saltRounds = 10;
-
 
 router.use(override('_override'))
-
-
-
 
 
 
@@ -26,8 +21,8 @@ router.get('/', (req, res, next) => {
           users: users
         })
       },
+
       'application/json': function(){
-        console.log(users)
         res.json(users)
       }
     })
@@ -40,20 +35,31 @@ router.get('/', (req, res, next) => {
 
 //GET ADD
 router.get('/add', (req, res) => {
-  res.render('./users/add')
+  res.format({
+
+    'text/html': function(){
+      res.render('./users/add')
+    }
+  })
 })
 
 
-//GET (id) USERS
+//GET (ID) USERS
 router.get('/:ROWID', (req, res, next) => {
   db.get(`SELECT *, ROWID as id FROM USERS WHERE id=${req.params.ROWID}`).then((show) => {
+    res.format({
 
-    res.render('./users/show', {
-      show: show
+      'text/html': function(){
+        res.render('./users/show', {
+          show: show
+        })
+      },
+
+      'application/json': function(){
+        res.json(show)
+      }
     })
 
-    console.log(show)
-    res.json(show)
   }).catch((errget) => {
       res.send(errget)
   })
@@ -63,84 +69,115 @@ router.get('/:ROWID', (req, res, next) => {
 //GET EDIT USERS
 router.get('/:ROWID/edit', (req, res, next) => {
   db.get(`SELECT *, ROWID AS id FROM USERS WHERE id=${req.params.ROWID}`).then((edit) => {
+    res.format({
 
-    res.render('./users/edit', {
-      edit: edit
+      'text/html': function(){
+        res.render('./users/edit', {
+          edit: edit
+        })
+      }
     })
-
-    console.log(edit)
-    res.json(edit)
   }).catch((errget) => {
       res.send(errget)
   })
 })
 
 
-
 //POST USERS
 router.post('/', (req, res, next) => {
+  let psw = bcrypt.hashSync(req.body.password, 10);
+  if (req.body.firstname !== '' && req.body.lastname !== '' && req.body.username !== '' && req.body.email != '' && req.body.password !== '') {
 
-  bcrypt.genSalt(saltRounds, function(err, salt) {
-    bcrypt.hash(req.body.password, salt, function(err, hash) {
+    db.run(`INSERT INTO USERS (firstname, lastname, username, password, email, createdAt, updatedAt) VALUES ('${req.body.firstname}','${req.body.lastname}','${req.body.username}','${psw}','${req.body.email}', '${time}', '${time}')`).then((my_User) => {
+      res.format({
+
+        'text/html': function(){
+          res.redirect(301, '/users')
+        },
+
+        'application/json': function(){
+          res.json('success')
+        }
+      })
+
+    }).catch((errpost) => {
+        res.send(errpost)
     })
-  })
-  db.run(`INSERT INTO USERS (firstname, lastname, username, password, email, createdAt, updatedAt) VALUES ('${req.body.firstname}','${req.body.lastname}','${req.body.username}','${req.body.password}','${req.body.email}', '${time}', '${time}')`)
-  .then((my_User) => {
+  }
 
-
-    res.json('success')
-  }).catch((errpost) => {
-      res.send(errpost)
-  })
-  res.redirect(301, '/users')
-
+  else {
+    alert('Please fill all fields')
+    res.redirect(301, '/users/add')
+  }
 })
 
 
 
 //UPDATE USERS
 router.patch('/:ROWID', (req, res, next) => {
-  db.run(`UPDATE USERS SET firstname = '${req.body.firstname}', lastname = '${req.body.lastname}', username = '${req.body.username}', password = '${req.body.password}', email = '${req.body.email}', updatedAt = '${time}' WHERE ROWID=${req.params.ROWID}`)
-  .then(() => {
+  let psw = bcrypt.hashSync(req.body.password, 10);
+  if (req.body.firstname !== '' && req.body.lastname !== '' && req.body.username !== '' && req.body.email != '' && req.body.password !== '') {
+    db.run(`UPDATE USERS SET firstname = '${req.body.firstname}', lastname = '${req.body.lastname}', username = '${req.body.username}', password = '${psw}', email = '${req.body.email}', updatedAt = '${time}' WHERE ROWID=${req.params.ROWID}`).then(() => {
+      res.format({
 
-    res.json('success')
-  }).catch((errput) => {
-      res.send(errput)
-  })
-  res.redirect(301, '/users')
+        'text/html': function(){
+          res.redirect(301, '/users')
+        },
+        'application/json': function(){
+          res.json('success')
+        }
+      })
+
+    }).catch((errput) => {
+        res.send(errput)
+    })
+  }
+  else{
+    alert('Please fill all fields')
+    res.redirect(301, '/users')
+  }
 })
 
 
 
 // DELETE USERS
 router.delete('/:ROWID', (req, res, next) => {
-  db.run(`DELETE FROM USERS WHERE ROWID=${req.params.ROWID}`)
-  .then((user_Deleted) => {
-    console.log('Le user a bien été effacé')
-    res.json(user_Deleted)
+  db.run(`DELETE FROM USERS WHERE ROWID=${req.params.ROWID}`).then((user_Deleted) => {
+    res.format({
+
+      'text/html': function(){
+        res.redirect(301, '/users')
+      },
+      'application/json': function(){
+        res.json('success')
+      }
+    })
+
   }).catch((errdel) => {
       res.send(errdel)
   })
-  res.redirect(301, '/users')
 
 })
 
+// GET THE USERS' TODOS
+router.get('/:ROWID/todos', (req, res, next) => {
+  db.all(`SELECT *, ROWID AS id FROM TODOS WHERE userId='${req.params.ROWID}'`).then((todosUser) => {
+    res.format({
 
- router.get('/:ROWID/todos', (req, res, next) => {
-   db.all(`SELECT *, ROWID AS id FROM TODOS WHERE userId='${req.params.ROWID}'`)
-   .then((todosUser) => {
+      'text/html': function(){
+        res.render('./users/todosUser', {
+          todosUser: todosUser
+        })
+      },
 
-      res.render('./users/todosUser', {
-        todosUser: todosUser
-      })
+      'application/json': function(){
+        res.json(todosUser)
+      }
+    })
 
-     console.log(todosUser)
-     res.json(todosUser)
-
-    }).catch((errget) => {
-     res.send(errget)
-
-   })
+  }).catch((errget) => {
+    res.send(errget)
+  })
 })
 
 

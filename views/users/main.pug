@@ -4,27 +4,28 @@ html(lang='fr')
     style
       include style.css
   body
+    #bigTitle
+      p#bigTitle USERS
     each val in users
       #todo.container
         p#title USER n°#{val.id}
 
           #user.content
-            p#text Firstname : #{val.firstname}
-            p#text Lastname : #{val.lastname}
-            p#text Username : #{val.username}
-            p#text The password is : #{val.password}
-            p#text The e-mail is : #{val.email}
+            p#text FIRSTNAME : #{val.firstname}
+            p#text LASTNAME : #{val.lastname}
+            p#text USERNAME : #{val.username}
+            p#text E-MAIL : #{val.email}
             p#subTitle Created the #{val.createdAt}
 
-            
+            #seeMore.button
+              form(action=`/users/${val.id}`, method='GET')
+                input#blueBut(type='submit', value="See more..")
 
             #delete.button
               form(action=`/users/${val.id}?_override=DELETE`, method='POST')
                 input#redBut(type='submit', value='Delete')
 
-            #seeMore.button
-              form(action=`/users/${val.id}`, method='GET')
-                input#blueBut(type='submit', value="See more..")
+
 
 
   form(action=`/users/add`, method='GET')

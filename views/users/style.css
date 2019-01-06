@@ -29,13 +29,13 @@ body {
 #title2  {
   font:bold 15px URW Chancery L, cursive ;
   font-size: xx-large;
-
+  margin-top: -30px;
   font-weight: 900;
-  margin-left: 200px;
+  margin-left: 15px;
 }
 
 #bigTitle {
-  font:bold 15px URW Chancery L, cursive ;
+  font:bold 25px URW Chancery L, cursive ;
   font-size: xxx-large;
   text-align: center;
   font-weight: 900;
@@ -56,6 +56,11 @@ body {
   display: inline-block;
 }
 
+.comeBack{
+  margin-top: -61.5px;
+}
+
+
 #blueBut {
 	padding:10px 3px 10px 3px;
 	font:bold 15px Arial;
@@ -64,7 +69,7 @@ body {
 	border-radius:2px;
 	width:100px;
 	border:none;
-  margin-left: 135px;
+  margin-left: 235px;
 }
 
 
@@ -77,6 +82,7 @@ body {
 	width:100px;
 	border:none;
   margin-bottom: 15px;
+  margin-left: 135px
 }
 
 #greenBut {
@@ -100,7 +106,7 @@ body {
   width:100px;
   border:none;
   margin-bottom: 15px;
-  margin-left: 135px;
+  margin-left: 235px;
 }
 
 #backBut {
@@ -112,7 +118,7 @@ body {
 	width:100px;
 	border:none;
   margin-bottom: 15px;
-  margin-left: 135px;
+
 }
 
 #addBut {
@@ -143,16 +149,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 #showTodosBut1 {
   background-color: #4191B3;
   color: black;
@@ -167,7 +163,7 @@ body {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
-  margin-left: 80px;
+  margin-left: 265px;
 }
 
 #showTodosBut1:hover {
@@ -176,66 +172,3 @@ body {
   border-radius: 12px;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-#showTodosBut {
-
-	font:bold 15px Arial;
-	background:#00407C;
-	color:#fff;
-	border-radius:2px;
-	width:150px;
-	border:none;
-  margin-left: 150px;
-
-
-
-
-
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  cursor: pointer;
-
-
-  background-color: white;
-  color: black;
-  border: 2px solid #4CAF50;
-
-  background-color: #4CAF50;
-  color: white;
-}
-
-#showTodosBut:hover {
-  background-color: #4CAF50;
-  color: white;*/

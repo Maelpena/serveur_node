@@ -5,7 +5,7 @@ html(lang='fr')
       include style.css
   body
     #bigTitle
-      p#bigTitle MY TODOS
+      p#bigTitle TODOLIST
     each val in todosUser
 
       #todo.container
@@ -17,15 +17,15 @@ html(lang='fr')
             p#text IT IS FOR : user n°#{val.userId}
             p#subTitle Created the #{val.createdAt}
 
-            #delete.button
-              form(action=`/todos/${val.id}?_override=DELETE`, method='POST')
-                input#redBut(type='submit', value='Delete')
-
             #seeMore.button
               form(action=`/todos/${val.id}`, method='GET')
                 input#blueBut(type='submit', value="See more..")
 
-            #comeBack.button
+            #delete.button
+              form(action=`/todos/${val.id}?_override=DELETE`, method='POST')
+                input#redBut(type='submit', value='Delete')
+
+            #comeBack.comeBack
               form(action='javascript:history.back()', method='GET')
                 input#backBut(type='submit', value='Come back')
 

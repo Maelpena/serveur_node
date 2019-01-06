@@ -4,36 +4,39 @@ html(lang='fr')
     style
       include style.css
   body
+    #bigTitle
+      p#bigTitle USERS
     #user.container
 
       #header.button
-
-        p#title2 USER n°#{show.id}
+        #title2.title2
+          p USER n°#{show.id}
 
       #header2.button
+        #bouton.title2
         form(action=`/users/${show.id}/todos`, method='GET')
           input#showTodosBut1(type='submit', value='Show his todos')
 
 
       #user.content
-        p#text Firstname : #{show.firstname}
-        p#text Lastname : #{show.lastname}
-        p#text Username : #{show.username}
-        p#text The password is : #{show.password}
-        p#text The e-mail is : #{show.email}
+        p#text FIRSTNAME : #{show.firstname}
+        p#text LASTNAME : #{show.lastname}
+        p#text USERNAME : #{show.username}
+        p#text E-MAIL : #{show.email}
         p#subTitle Created the #{show.createdAt}
         p#subTitle Created the #{show.updatedAt}
-
-
-        #delete.button
-          form(action=`/users/${show.id}?_override=DELETE`, method='POST')
-            input#redBut(type='submit', value='Delete')
 
         #edit.button
           form(action=`/users/${show.id}/edit`, method="GET" )
             input#editBut(type='submit' value='Edit')
 
-        #comeBack.button
+        #delete.button
+          form(action=`/users/${show.id}?_override=DELETE`, method='POST')
+            input#redBut(type='submit', value='Delete')
+
+
+
+        #comeBack.comeBack
           form(action='javascript:history.back()', method='GET')
             input#backBut(type='submit', value='Come back')
 

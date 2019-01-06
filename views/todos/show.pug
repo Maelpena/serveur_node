@@ -4,6 +4,8 @@ html(lang='fr')
     style
       include style.css
   body
+    #bigTitle
+      p#bigTitle TODOS
     #todo.container
 
       p#title TODO n°#{show.id}
@@ -15,15 +17,16 @@ html(lang='fr')
           p#subTitle Created the #{show.createdAt}
           p#subTitle Updated the #{show.updatedAt}
 
-          #delete.button
-            form(action=`/todos/${show.id}?_override=DELETE`, method='POST')
-              input#redBut(type='submit', value='Delete')
 
           #edit.button
             form(action=`/todos/${show.id}/edit`, method="GET" )
               input#editBut(type='submit' value='Edit')
 
-          #comeBack.button
+          #delete.button
+            form(action=`/todos/${show.id}?_override=DELETE`, method='POST')
+              input#redBut(type='submit', value='Delete')
+
+          #comeBack.comeBack
             form(action='javascript:history.back()', method='GET')
               input#backBut(type='submit', value='Come back')
 

@@ -4,6 +4,8 @@ html(lang='fr')
     style
       include style.css
   body
+    #bigTitle
+      p#bigTitle TODOS
     each val in todos
       #todo.container
         p#title TODO n°#{val.id}
@@ -14,13 +16,15 @@ html(lang='fr')
             p#text IT IS FOR : user n°#{val.userId}
             p#subTitle Created the #{val.createdAt}
 
+            #seeMore.button
+              form(action=`/todos/${val.id}`, method='GET')
+                input#blueBut(type='submit', value="See more..")
+
+
             #delete.button
               form(action=`/todos/${val.id}?_override=DELETE`, method='POST')
                 input#redBut(type='submit', value='Delete')
 
-            #seeMore.button
-              form(action=`/todos/${val.id}`, method='GET')
-                input#blueBut(type='submit', value="See more..")
 
 
 

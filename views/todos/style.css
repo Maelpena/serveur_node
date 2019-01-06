@@ -26,6 +26,13 @@ body {
   font-weight: 900;
 }
 
+#bigTitle {
+  font:bold 25px URW Chancery L, cursive ;
+  font-size: xxx-large;
+  text-align: center;
+  font-weight: 900;
+}
+
 #subTitle {
   font-size: 10px;
   text-align: center;
@@ -41,6 +48,12 @@ body {
   display: inline-block;
 }
 
+
+.comeBack{
+  margin-top: -61.5px;
+}
+
+
 #blueBut {
 	padding:10px 3px 10px 3px;
 	font:bold 15px Arial;
@@ -49,7 +62,7 @@ body {
 	border-radius:2px;
 	width:100px;
 	border:none;
-  margin-left: 135px;
+  margin-left: 235px;
 }
 
 
@@ -62,6 +75,7 @@ body {
 	width:100px;
 	border:none;
   margin-bottom: 15px;
+  margin-left: 135px
 }
 
 #greenBut {
@@ -85,7 +99,7 @@ body {
   width:100px;
   border:none;
   margin-bottom: 15px;
-  margin-left: 135px;
+  margin-left: 235px;
 }
 
 #backBut {
@@ -97,7 +111,7 @@ body {
 	width:100px;
 	border:none;
   margin-bottom: 15px;
-  margin-left: 135px;
+
 }
 
 #addBut {
